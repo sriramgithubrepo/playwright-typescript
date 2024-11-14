@@ -1,8 +1,10 @@
 import { test, expect } from '../fixtures/pomFixtures.ts';
 import * as testData from './testData/sauceDemoTestData.json';
 import * as constants from './testData/constants.json';
+import {allure} from 'allure-playwright';
 
 test.beforeEach('Sauce demo login and add item', async ({ loginPage,productPage,commonPage }) => {
+    await allure.feature('UI Suite');
     await loginPage.navigateTo(constants.url);
     await loginPage.completeLogin(testData.validUserName, testData.validPassword);
     await productPage.addItems(testData.itemsToAdd);

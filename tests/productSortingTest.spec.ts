@@ -2,8 +2,10 @@ import { test, expect } from '../fixtures/pomFixtures.ts';
 import * as testData from './testData/sauceDemoTestData.json';
 import * as constants from './testData/constants.json';
 import { sortAndCompareStringArray, sortAndCompareNumberArray } from './helper/utils.ts';
+import {allure} from 'allure-playwright';
 
 test.beforeEach('Sauce demo login', async ({ loginPage }) => {
+    await allure.feature('UI Suite');
     await loginPage.navigateTo(constants.url);
     await loginPage.completeLogin(testData.validUserName, testData.validPassword);
 })

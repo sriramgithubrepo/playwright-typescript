@@ -1,9 +1,15 @@
 import { test, expect } from '../fixtures/pomFixtures.ts';
 import { faker } from '@faker-js/faker';
 import * as constants from './testData/constants.json';
+import {allure} from 'allure-playwright';
 
 const token: string = constants.token;
 const baseURL: string = "https://gorest.co.in/public/v2/users";
+
+test.beforeEach(async ()=>{
+await allure.feature('API Suite');
+})
+
 
 test('GET API', async ({ request }) => {
     const allUser = await getUser(request)
