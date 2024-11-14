@@ -1,86 +1,89 @@
 import { test, expect } from '../fixtures/pomFixtures.ts';
 import { faker } from '@faker-js/faker';
 import * as constants from './testData/constants.json';
-const token:string=constants.token;
+
+const token: string = constants.token;
+const baseURL: string = "https://gorest.co.in/public/v2/users";
 
 test('GET API', async ({ request }) => {
-    const getAllUserResponse = await request.get('https://gorest.co.in/public/v2/users/',
-        { headers: { "Authorization": token } });
-    const getAllUserResponseJson = await getAllUserResponse.json();
-    expect(getAllUserResponse.status()).toBe(200);
-    let firstUserID = getAllUserResponseJson[0].id;
-    let firstUserName = getAllUserResponseJson[0].name;
-
-    const getSingleUserResponse = await request.get(`https://gorest.co.in/public/v2/users/${firstUserID}`,
-        { headers: { "Authorization": token } });
-    expect(getSingleUserResponse.status()).toBe(200);
-    const getSingleUserResponseJson = await getSingleUserResponse.json();
-    expect(getSingleUserResponseJson.id).toBe(firstUserID);
-    expect(getSingleUserResponseJson.name).toBe(firstUserName);
+    const allUser = await getUser(request)
+    let firstUserID = allUser[0].id;
+    let firstUserName = allUser[0].name;
+    const singleUser = await getUser(request,firstUserID)
+    expect(singleUser.id).toBe(firstUserID);
+    expect(singleUser.name).toBe(firstUserName);
 })
 
 test('POST API', async ({ request }) => {
     var payload = {
-        "name": `${faker.person.fullName()}`,
-        "email": `${faker.internet.email()}`,
+        "name": faker.person.fullName(),
+        "email": faker.internet.email(),
         "gender": "male",
         "status": "active"
     }
-    const createUserResponse = await request.post('https://gorest.co.in/public/v2/users/',
-        {
-            headers: { "Authorization": token },
-            data: payload
-        }
-    );
-    const createUserResponseJson = await createUserResponse.json();
-    expect(createUserResponse.status()).toBe(201);
-    let firstUserID = createUserResponseJson.id;
-    let firstUserName = createUserResponseJson.name;
 
-    const getSingleUserResponse = await request.get(`https://gorest.co.in/public/v2/users/${firstUserID}`,
-        { headers: { "Authorization": token } });
-    expect(getSingleUserResponse.status()).toBe(200);
-    const getSingleUserResponseJson = await getSingleUserResponse.json();
-    expect(getSingleUserResponseJson.id).toBe(firstUserID);
-    expect(getSingleUserResponseJson.name).toBe(firstUserName);
+    const createdUser = await createUser(request,payload);
+    let firstUserID = createdUser.id;
+    let firstUserName = createdUser.name;
+    const singleUser = await getUser(request,firstUserID)
+    expect(singleUser.id).toBe(firstUserID);
+    expect(singleUser.name).toBe(firstUserName);
 })
 
 test('PUT API', async ({ request }) => {
-    const getAllUserResponse = await request.get('https://gorest.co.in/public/v2/users/',
-        { headers: { "Authorization": token } });
-    const getAllUserResponseJson = await getAllUserResponse.json();
-    expect(getAllUserResponse.status()).toBe(200);
-    let firstUserID = getAllUserResponseJson[0].id;
-    let firstUserName = getAllUserResponseJson[0].name;
+    const allUser = await getUser(request)
+    let firstUserID = allUser[0].id;
 
     var payload = {
-        "name": `${faker.person.fullName()}`,
+        "name": faker.person.fullName(),
     }
-    const updateUserResponse = await request.put(`https://gorest.co.in/public/v2/users/${firstUserID}`,
-        {
-            headers: { "Authorization": token },
-            data: payload
-        });
-    expect(updateUserResponse.status()).toBe(200);
-    const updateUserResponseJson = await updateUserResponse.json();
-    expect(updateUserResponseJson.id).toBe(firstUserID);
-    expect(updateUserResponseJson.name).toBe(payload.name);
+    const updatedUser = await updateUser(request,firstUserID,payload)
+    expect(updatedUser.id).toBe(firstUserID);
+    expect(updatedUser.name).toBe(payload.name);
 })
 
 test('DELETE API', async ({ request }) => {
-    const getAllUserResponse = await request.get('https://gorest.co.in/public/v2/users/',
-        { headers: { "Authorization": token } });
-    const getAllUserResponseJson = await getAllUserResponse.json();
-    expect(getAllUserResponse.status()).toBe(200);
-    let firstUserID = getAllUserResponseJson[0].id;
-    let firstUserName = getAllUserResponseJson[0].name;
+    const allUser = await getUser(request)
+    let firstUserID = allUser[0].id;
 
-    const deleteUserResponse = await request.delete(`https://gorest.co.in/public/v2/users/${firstUserID}`,
-        {
-            headers: { "Authorization": token },
-        });
-    expect(deleteUserResponse.status()).toBe(204);
-    const getSingleUserResponse = await request.get(`https://gorest.co.in/public/v2/users/${firstUserID}`,
+    await deleteUser(request,firstUserID)
+    const response = await request.get(`${baseURL}/${firstUserID}`,
         { headers: { "Authorization": token } });
-    expect(getSingleUserResponse.status()).toBe(404);   
+    expect(response.status()).toBe(404);
 })
+
+async function getUser(request: any, userID: string | null =null){
+
+    const url = userID ? `${baseURL}/${userID}` : baseURL
+    const response = await request.get(url, { headers: { "Authorization": token } });
+    expect(response.status()).toBe(200);
+    return response.json();
+}
+
+async function createUser(request: any, payload: object){
+
+    const response = await request.post(baseURL, {
+        headers: { "Authorization": token },
+        data: payload
+    });
+    expect(response.status()).toBe(201);
+    return response.json();
+}
+
+async function updateUser(request: any,userID:string, payload: object){
+
+    const response = await request.put(`${baseURL}/${userID}`, {
+        headers: { "Authorization": token },
+        data: payload
+    });
+    expect(response.status()).toBe(200);
+    return response.json();
+}
+
+async function deleteUser(request: any,userID:string){
+
+    const response = await request.delete(`${baseURL}/${userID}`, {
+        headers: { "Authorization": token },
+    });
+    expect(response.status()).toBe(204);
+}
