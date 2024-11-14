@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import BasePage from './basePage';
+import { convertStringArrayToNumberArray } from '../helper/utils';
 
 export class ProductPage extends BasePage {
   readonly page: Page;
@@ -15,7 +16,10 @@ export class ProductPage extends BasePage {
     this.cartButton = page.locator('#shopping_cart_container');
     this.allItemDescription = page.locator('div[data-test="inventory-item-name"]');
     this.allItemPrice = page.locator('div[data-test="inventory-item-price"]');
+  }
 
+  getAddtoCartLocators(productName:string):Locator{
+   return this.page.locator(`//div[contains(@class, "inventory_item") and .//div[normalize-space(.)="${productName}"]]//button[text()="Add to cart"]`)
   }
 
   async clickCartButton() {
@@ -29,12 +33,17 @@ export class ProductPage extends BasePage {
   async getAllItemDescription(): Promise<string[]> {
     return await this.getAllElementText(this.allItemDescription);
   }
+  
+  async addItems(itemsToAdd:string[]) {
+    for(const item of itemsToAdd){
+     const addtoCartButton= this.getAddtoCartLocators(item);
+     await addtoCartButton.click();
+    }
+  }
 
   async getAllItemPrice(): Promise<number[]> {
     const priceTexts = await this.getAllElementText(this.allItemPrice);
-    if (!priceTexts.length) throw new Error("Item prices not found");
-    const prices = priceTexts.map(text => parseFloat(text.replace('$', '')));
-    return prices;
+    return convertStringArrayToNumberArray(priceTexts);
   }
 
 }

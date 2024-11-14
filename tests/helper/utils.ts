@@ -25,3 +25,15 @@ export const sortAndCompareNumberArray = (inputArray:number[],ascendingOrDescend
    const compareResult = inputArray.every((value, index) => value === sortedArray[index]);
    return compareResult;
 }
+
+export const calculateTotal = (inputArray: number[]): number => {
+  return inputArray.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue; // Explicit return inside the function body
+  }, 0);
+};
+
+export const convertStringArrayToNumberArray = (inputArray: string[]): number[]=> {
+  if (!inputArray.length) throw new Error("Item prices not found");
+  const prices = inputArray.map(text => parseFloat(text.replace('$', '')));
+  return prices;
+}

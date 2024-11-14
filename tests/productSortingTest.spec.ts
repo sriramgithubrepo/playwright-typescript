@@ -8,38 +8,39 @@ let loginPage: LoginPage;
 let productPage: ProductPage;
 
 test.beforeEach('Sauce demo login', async ({ page }) => {
-    loginPage = new LoginPage(page)
-    productPage = new ProductPage(page)
+    loginPage = new LoginPage(page);
+    productPage = new ProductPage(page);
     await loginPage.navigateTo('https://www.saucedemo.com/');
     await loginPage.completeLogin(testData.validUserName, testData.validPassword);
 })
 
-test('Verify product page default sorting order', async ({ page }) => {
+test('Verify product page default sorting order', async ({  }) => {
     const allItemDesc = await productPage.getAllItemDescription();
     expect(sortAndCompareStringArray(allItemDesc, 'ascending')).toBe(true);
 });
 
-test('Verify product page is sorted from A-Z', async ({ page }) => {
+test('Verify product page is sorted from A-Z', async ({  }) => {
     await productPage.selectDropdown('za', 'value');
     await productPage.selectDropdown('az', 'value');
     const allItemDesc = await productPage.getAllItemDescription();
     expect(sortAndCompareStringArray(allItemDesc, 'ascending')).toBe(true);
 });
 
-test('Verify product page is sorted from Z-A', async ({ page }) => {
+test('Verify product page is sorted from Z-A', async ({ }) => {
     await productPage.selectDropdown('za', 'value');
     const allItemDesc = await productPage.getAllItemDescription();
     expect(sortAndCompareStringArray(allItemDesc, 'descending')).toBe(true);
 });
 
-test('Verify product page is sorted from low-high', async ({ page }) => {
+test('Verify product page is sorted from low-high', async ({  }) => {
     await productPage.selectDropdown('lohi', 'value');
     const allItemPrice = await productPage.getAllItemPrice();
     expect(sortAndCompareNumberArray(allItemPrice, 'ascending')).toBe(true);
 });
 
-test('Verify product page is sorted from high-low', async ({ page }) => {
+test('Verify product page is sorted from high-low', async ({ }) => {
     await productPage.selectDropdown('hilo', 'value');
     const allItemPrice = await productPage.getAllItemPrice();
     expect(sortAndCompareNumberArray(allItemPrice, 'descending')).toBe(true);
 });
+
