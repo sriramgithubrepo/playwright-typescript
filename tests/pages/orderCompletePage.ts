@@ -3,7 +3,7 @@ import BasePage from './basePage';
 
 export class OrderCompletePage extends BasePage {
     readonly page: Page;
-    readonly orderSuccessText: Locator;
+    private readonly orderSuccessText: Locator;
 
     constructor(page: Page) {
         super(page)

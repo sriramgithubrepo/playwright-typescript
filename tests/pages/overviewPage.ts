@@ -4,10 +4,10 @@ import { calculateTotal,convertStringArrayToNumberArray } from '../helper/utils'
 
 export class OverviewPage extends BasePage {
     readonly page: Page;
-    readonly allItemDescription: Locator;
-    readonly allItemPrice: Locator;
-    readonly finishButton: Locator;
-    readonly totalPriceText: Locator;
+    private readonly allItemDescription: Locator;
+    private readonly allItemPrice: Locator;
+    private readonly finishButton: Locator;
+    private readonly totalPriceText: Locator;
 
     constructor(page: Page) {
         super(page)

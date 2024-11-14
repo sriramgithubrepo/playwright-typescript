@@ -3,9 +3,9 @@ import BasePage from './basePage';
 
 export class HamburgerIconPage extends BasePage{
     readonly page: Page;
-    readonly allItemsButton:Locator;
-    readonly aboutButton:Locator;
-    readonly logoutButton :Locator;
+    private readonly allItemsButton:Locator;
+    private readonly aboutButton:Locator;
+    private readonly logoutButton :Locator;
 
     constructor(page:Page){
         super(page);

@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from './pages/loginPage.ts'
+import { LoginPage } from './pages/loginPage.ts';
 import { ProductPage } from './pages/productPage.ts';
-import * as testData from './testData/sauceDemoTestData.json'
+import * as testData from './testData/sauceDemoTestData.json';
+import * as constants from './testData/constants.json';
 import { sortAndCompareStringArray, sortAndCompareNumberArray } from './helper/utils.ts';
 
 let loginPage: LoginPage;
@@ -10,7 +11,7 @@ let productPage: ProductPage;
 test.beforeEach('Sauce demo login', async ({ page }) => {
     loginPage = new LoginPage(page);
     productPage = new ProductPage(page);
-    await loginPage.navigateTo('https://www.saucedemo.com/');
+    await loginPage.navigateTo(constants.url);
     await loginPage.completeLogin(testData.validUserName, testData.validPassword);
 })
 

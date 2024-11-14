@@ -4,16 +4,14 @@ import { convertStringArrayToNumberArray } from '../helper/utils';
 
 export class ProductPage extends BasePage {
   readonly page: Page;
-  readonly sortButton: string;
-  readonly cartButton: Locator;
-  readonly allItemDescription: Locator;
-  readonly allItemPrice: Locator;
+ private readonly sortButton: string;
+ private readonly allItemDescription: Locator;
+ private readonly allItemPrice: Locator;
 
   constructor(page: Page) {
     super(page);
     this.page = page;
     this.sortButton = 'select[data-test="product-sort-container"]';
-    this.cartButton = page.locator('#shopping_cart_container');
     this.allItemDescription = page.locator('div[data-test="inventory-item-name"]');
     this.allItemPrice = page.locator('div[data-test="inventory-item-price"]');
   }
@@ -21,11 +19,7 @@ export class ProductPage extends BasePage {
   getAddtoCartLocators(productName:string):Locator{
    return this.page.locator(`//div[contains(@class, "inventory_item") and .//div[normalize-space(.)="${productName}"]]//button[text()="Add to cart"]`)
   }
-
-  async clickCartButton() {
-    await this.clickElement(this.cartButton);
-  }
-
+  
   async selectDropdown(textOrValue: string, optionToSelect: string) {
     await this.selectStaticDropdown(this.sortButton, textOrValue, optionToSelect);
   }
