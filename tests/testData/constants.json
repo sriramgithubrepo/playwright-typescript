@@ -1,4 +1,5 @@
 {
     "orderSuccessText": "Thank you for your order!",
-    "url":"https://www.saucedemo.com/"
+    "url":"https://www.saucedemo.com/",
+    "token":"Bearer 792dca52d5db7066a3c2f30e3065103de98e60dbe69c60129c9b8008b5e9a072"
 }
