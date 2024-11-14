@@ -2,13 +2,25 @@
   "name": "spritecloud-playwright-typescript-assignment",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "clean.report":"rimraf allure-report allure-results && mkdirp allure-report allure-results",
+    "generate.report":"npx allure generate --single-file ./allure-results --clean",
+    "open.report":"npx allure open ./allure-report",
+    "pretest":"npm run clean.report",
+    "posttest":"npm run generate.report && npm run open.report",
+    "execute.script":"npx playwright test --project=chromium",
+    "test":"npm run execute.script || npm run posttest"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.48.2",
-    "@types/node": "^22.9.0"
+    "@types/node": "^22.9.0",
+    "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.0.6",
+    "mkdirp": "^3.0.1",
+    "rimraf": "^6.0.1"
   }
 }
