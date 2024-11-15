@@ -19,11 +19,15 @@ Below have mentioned the prerequisites and installation steps
 - Once the execution completes, the report will be automatically opening in the default browser as below
 ![](readme-images/report.png.png)
 
-## Documentation
+## To access documentation locally
 - The project document is available in the `docs/` folder
 - To access the documentation, navigate to docs directory in file explorer and open `index.html`
 ![](readme-images/Typedoc1.png)
 ![](readme-images/Typedoc2.png)
+
+## To access online documentation
+- To view online documentation please check,
+[![Documentation](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://sriramgithubrepo.github.io/spriteCloud-playwright-typescript-assignment/)
 
 
 ## Project folder structure
