@@ -33,8 +33,9 @@ Below have mentioned the prerequisites and installation steps
 ## Project folder structure
 
 ### .circleci
-- config.yml -> Has the configuration for intergrating and executing test in circleCi
-
+- config.yml -> Has the configuration for intergrating and executing test in circleCi, below is the circleci execution report 
+![](readme-images/circleciindividualjob.png)
+![](readme-images/circlecioverallstatus.png)
 
 ### allure-report
 - index.html -> Allure HTML report, which automatically opens in the default browser post test completion
