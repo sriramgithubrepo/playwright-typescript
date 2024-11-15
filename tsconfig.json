@@ -1,0 +1,8 @@
+{"compilerOptions": {
+    "target": "ES2016",
+    "resolveJsonModule": true,
+    "module": "Node16",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "moduleResolution": "node16" 
+}}

@@ -3,6 +3,9 @@ import { faker } from '@faker-js/faker';
 import * as constants from './testData/constants.json';
 import {allure} from 'allure-playwright';
 
+/**
+ * API test to validate CRUD operations such as Get User,Create User, Update User,Delete User scenarios for 'GoRest'
+ */
 const token: string = constants.token;
 const baseURL: string = "https://gorest.co.in/public/v2/users";
 

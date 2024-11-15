@@ -1,7 +1,9 @@
 import { Locator, Page } from '@playwright/test';
 import BasePage from './basePage';
 
-
+/**
+ * Checkout Information page class handles the locators and associated functions related to checkout information page
+ */
 export class CheckoutInformationPage extends BasePage {
     readonly page: Page;
     private readonly firstName: Locator;
@@ -9,6 +11,10 @@ export class CheckoutInformationPage extends BasePage {
     private readonly postalCode: Locator;
     private readonly continueButton: Locator;
 
+    /**
+  * Initializes locators for the checkout information page
+  *  @param {Page} page - playwright page object
+  */
     constructor(page: Page) {
         super(page);
         this.page = page;
@@ -18,7 +24,12 @@ export class CheckoutInformationPage extends BasePage {
         this.continueButton = page.locator('#continue');
     }
 
-    async fillDetailsAndProceed(userDetails: string[]) {
+    /**
+     * Fill in the checkout information form with the user details
+     * @param {sting[]} userDetails - An array containing user details
+     * @returns {Promise<void>} - A promise that resolves when the form is filled
+     */
+    async fillDetailsAndProceed(userDetails: string[]): Promise<void> {
         await this.fillText(this.firstName, userDetails[0]);
         await this.fillText(this.lastName, userDetails[1]);
         await this.fillText(this.postalCode, userDetails[2]);

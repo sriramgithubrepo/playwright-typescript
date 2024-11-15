@@ -3,6 +3,9 @@ import * as testData from './testData/sauceDemoTestData.json';
 import * as constants from './testData/constants.json';
 import {allure} from 'allure-playwright';
 
+/**
+ * Test that validates the end to end functional flow of placing an order in sauce demo website
+ */
 test.beforeEach('Sauce demo login and add item', async ({ loginPage,productPage,commonPage }) => {
     await allure.feature('UI Suite');
     await loginPage.navigateTo(constants.url);

@@ -1,6 +1,10 @@
 import { test, expect } from '../fixtures/pomFixtures.ts';
 import {allure} from 'allure-playwright';
 
+/**
+ * API test to validate Get User scenario on 'reqres.in'
+ */
+
 test('GET API', async ({ request }) => {
     await allure.feature('API Suite');
     const response = await request.get('https://reqres.in/api/users');

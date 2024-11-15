@@ -4,6 +4,9 @@ import * as testData from './testData/sauceDemoTestData.json';
 import * as constants from './testData/constants.json';
 import {allure} from 'allure-playwright';
 
+/**
+ * Test that validates all 3 navigation links in the Hamburger icon
+ */
 test.beforeEach('Sauce demo login', async ({ loginPage }) => {
     await allure.feature('UI Suite');
     await loginPage.navigateTo(constants.url);

@@ -4,6 +4,9 @@ import * as constants from './testData/constants.json';
 import { sortAndCompareStringArray, sortAndCompareNumberArray } from './helper/utils.ts';
 import {allure} from 'allure-playwright';
 
+/**
+ * Test that validates all 4 sorting functionalities(Description ascending/descending and Price ascending/descending) available in products page
+ */
 test.beforeEach('Sauce demo login', async ({ loginPage }) => {
     await allure.feature('UI Suite');
     await loginPage.navigateTo(constants.url);

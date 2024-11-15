@@ -1,0 +1,75 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>spritecloud-playwright-typescript-assignment</title><meta name="description" content="Documentation for spritecloud-playwright-typescript-assignment"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">spritecloud-playwright-typescript-assignment</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>spritecloud-playwright-typescript-assignment</h1></div><div class="tsd-panel tsd-typography"><a id="md:spritecloud-playwright-typescript-assignment" class="tsd-anchor"></a><h1 class="tsd-anchor-link">SpriteCloud playwright typescript assignment<a href="#md:spritecloud-playwright-typescript-assignment" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>This repo is the playwright typescript automation for <a href="https://www.saucedemo.com/" target="_blank" class="external">Sauce demo</a> application.
+Below have mentioned the prerequisites and installation steps</p>
+<a id="md:pre-requisites" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Pre-requisites<a href="#md:pre-requisites" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>node</li>
+<li>Typescript</li>
+<li>Java(ensure its added in Environmental variable)</li>
+<li>Any IDE (preferably VS Code)</li>
+</ul>
+<a id="md:installation" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Installation<a href="#md:installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>Clone this repository</li>
+<li>Open the repository in IDE</li>
+<li>Open IDE terminal and run <code>npm install</code>(for installing dependencies) and <code>npx playwright install</code>(for installing playwright browsers)</li>
+</ul>
+<a id="md:to-run-test-and-view-report" class="tsd-anchor"></a><h2 class="tsd-anchor-link">To run test and view report<a href="#md:to-run-test-and-view-report" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>Run the command <code>npm run test</code></li>
+<li>This command will run all the test against 3 browsers(chromium,webkit,firefox)</li>
+<li>Once the execution completes, the report will be automatically opening in the default browser as below
+<img src="media/report.png.png" alt=""></li>
+</ul>
+<a id="md:project-folder-structure" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Project folder structure<a href="#md:project-folder-structure" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><a id="md:allure-report" class="tsd-anchor"></a><h3 class="tsd-anchor-link">allure-report<a href="#md:allure-report" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>index.html -&gt; Allure HTML report, which automatically opens in the default browser post test completion</li>
+</ul>
+<a id="md:allure-results" class="tsd-anchor"></a><h3 class="tsd-anchor-link">allure-results<a href="#md:allure-results" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Contains JSON report for each test execution</li>
+</ul>
+<a id="md:fixures" class="tsd-anchor"></a><h3 class="tsd-anchor-link">fixures<a href="#md:fixures" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>pomFixtures.ts -&gt; Customised Fixture file to override playwright default fixture</li>
+</ul>
+<a id="md:node_modules" class="tsd-anchor"></a><h3 class="tsd-anchor-link">node_modules<a href="#md:node_modules" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Contains the installed dependencies source files</li>
+</ul>
+<a id="md:playwright-report" class="tsd-anchor"></a><h3 class="tsd-anchor-link">playwright-report<a href="#md:playwright-report" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Contains the default playwright reports such has html report</li>
+</ul>
+<a id="md:test-results" class="tsd-anchor"></a><h3 class="tsd-anchor-link">test-results<a href="#md:test-results" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Contains the test execution results such as traces,screenshot,video</li>
+</ul>
+<a id="md:tests" class="tsd-anchor"></a><h3 class="tsd-anchor-link">tests<a href="#md:tests" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>
+<p>helper/utils.ts -&gt; Contains the reuseable functions</p>
+</li>
+<li>
+<p>pages -&gt; Contains the page object files for all the pages in Sauce demo website</p>
+</li>
+<li>
+<p>testData/constants.json -&gt; Holds the constant data such as URL,Token,etc</p>
+</li>
+<li>
+<p>testData/sauceDemoTestData.json -&gt; Holds the test data(user credentials)for sauce demo</p>
+</li>
+<li>
+<p>goRestAPITest.spec.ts -&gt; API test to validate CRUD operations such as Get User,Create User, Update User,Delete User scenarios for <a href="https://gorest.co.in/rest-console" target="_blank" class="external">GoRestAPI</a></p>
+</li>
+<li>
+<p>reqresAPITest.spec.ts -&gt; API test to validate Get User scenario <a href="https://reqres.in" target="_blank" class="external">reqres.in</a></p>
+</li>
+<li>
+<p>hamburgerNavigationTest.spec.ts -&gt; Test that validates all 3 navigation links in the Hamburger icon</p>
+</li>
+<li>
+<p>placeOrderTest.spec.ts -&gt; Test that validates the end to end functional flow of placing an order in sauce demo website</p>
+</li>
+<li>
+<p>productSortingTest.spec.ts -&gt; Test that validates all 4 sorting functionalities(Description ascending/descending and Price ascending/descending) available in products page</p>
+</li>
+</ul>
+<a id="md:root-folder" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Root folder<a href="#md:root-folder" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>
+<p>package.json and package-lock.json -&gt; Dependency management file</p>
+</li>
+<li>
+<p>playwright.config.ts -&gt; Holds the project level configuration of playwright</p>
+</li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:spritecloud-playwright-typescript-assignment"><span>Sprite<wbr/>Cloud playwright typescript assignment</span></a><ul><li><a href="#md:pre-requisites"><span>Pre-<wbr/>requisites</span></a></li><li><a href="#md:installation"><span>Installation</span></a></li><li><a href="#md:to-run-test-and-view-report"><span>To run test and view report</span></a></li><li><a href="#md:project-folder-structure"><span>Project folder structure</span></a></li><li><ul><li><a href="#md:allure-report"><span>allure-<wbr/>report</span></a></li><li><a href="#md:allure-results"><span>allure-<wbr/>results</span></a></li><li><a href="#md:fixures"><span>fixures</span></a></li><li><a href="#md:node_modules"><span>node_<wbr/>modules</span></a></li><li><a href="#md:playwright-report"><span>playwright-<wbr/>report</span></a></li><li><a href="#md:test-results"><span>test-<wbr/>results</span></a></li><li><a href="#md:tests"><span>tests</span></a></li><li><a href="#md:root-folder"><span>Root folder</span></a></li></ul></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>spritecloud-playwright-typescript-assignment</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
