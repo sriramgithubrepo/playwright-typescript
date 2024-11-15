@@ -66,11 +66,15 @@ export default class BasePage {
      * @param {string} optionToSelect - The criteria of the selection i.e value or label
      * @returns {Promise<void>} - A promise that resolves when selection is complete
      */
-    async selectStaticDropdown(element: string, valueToSelect: string, optionToSelect: string = 'value'):Promise<void> {
-        if (optionToSelect === 'value') {
-            await this.page.selectOption(element, { value: valueToSelect })
-        } else if (optionToSelect === 'text') {
-            await this.page.selectOption(element, { label: valueToSelect })
-        }
+    async selectStaticDropdown(element: string | Locator, valueToSelect: string, optionToSelect: string = 'value'): Promise<void> {
+    // Convert string to Locator if necessary
+    const dropdown = typeof element === 'string' ? this.page.locator(element) : element;
+
+    if (optionToSelect === 'value') {
+        await dropdown.selectOption({ value: valueToSelect });
+    } else if (optionToSelect === 'text') {
+        await dropdown.selectOption({ label: valueToSelect });
     }
+}
+
 }
