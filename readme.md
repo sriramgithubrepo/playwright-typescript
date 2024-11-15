@@ -17,7 +17,7 @@ Below have mentioned the prerequisites and installation steps
 - Run the command `npm run test`
 - This command will run all the test against 3 browsers(chromium,webkit,firefox)
 - Once the execution completes, the report will be automatically opening in the default browser as below
-![](readme-images/report.png.png)
+![](readme-images/reportAPI+UI.png)
 
 ## To access documentation locally
 - The project document is available in the `docs/` folder
@@ -31,6 +31,10 @@ Below have mentioned the prerequisites and installation steps
 
 
 ## Project folder structure
+
+### .circleci
+- config.yml -> Has the configuration for intergrating and executing test in circleCi
+
 
 ### allure-report
 - index.html -> Allure HTML report, which automatically opens in the default browser post test completion
