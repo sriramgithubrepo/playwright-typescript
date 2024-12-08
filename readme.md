@@ -1,4 +1,4 @@
-# SpriteCloud playwright typescript assignment
+# Playwright typescript 
 This repo is the playwright typescript automation for [Sauce demo](https://www.saucedemo.com/) application.
 Below have mentioned the prerequisites and installation steps
 
